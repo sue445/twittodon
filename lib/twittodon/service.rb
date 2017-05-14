@@ -4,6 +4,8 @@ module Twittodon
   class Service
     UNKNOWN_SINCE_ID = -1
 
+    attr_reader :twitter, :mastodon
+
     def initialize(twitter_consumer_key:, twitter_consumer_secret:, twitter_access_token:, twitter_access_token_secret:,
                    mastodon_url:, mastodon_access_token:,
                    redis:)
@@ -45,7 +47,7 @@ module Twittodon
 
     def toot_tweet(tweet)
       toot = "#{tweet.text} (via. Twitter #{tweet.uri.to_s})"
-      # @mastpdon.create_status(toot)
+      @mastodon.create_status(toot)
       @logger.info "Toot to mastodon: #{toot}"
     end
 
