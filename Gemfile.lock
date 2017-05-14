@@ -32,6 +32,7 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
+    mock_redis (0.17.3)
     multipart-post (2.0.0)
     naught (1.1.0)
     onkcop (0.48.1.1)
@@ -52,6 +53,7 @@ GEM
     rainbow (2.2.2)
       rake
     rake (12.0.0)
+    redis (3.3.3)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -107,8 +109,10 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   mastodon-api
+  mock_redis
   onkcop
   pry-byebug
+  redis
   rspec
   rspec-power_assert
   twitter
