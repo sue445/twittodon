@@ -46,6 +46,12 @@ describe Twittodon::Twitter do
       ).client
     end
 
+    let(:query) { "from:sue445" }
+
+    let(:since_id) { -1 }
+
+    let(:fixture_name) { "search_twitter_including_media" }
+
     it "works" do
       VCR.use_cassette fixture_name do
         client.search(query, since_id: since_id)
