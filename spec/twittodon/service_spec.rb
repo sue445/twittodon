@@ -30,7 +30,40 @@ describe Twittodon::Service do
           メンテナンスが予定通り終了しました。
           DLはこちら→ https://t.co/ZF8NiA4asq     #キュアぱず (via. Twitter https://twitter.com/precure_app/status/862564095446327296)
         EOS
-        expect(service.mastodon).to have_received(:create_status).with(expected_toot)
+        expect(service.mastodon).to have_received(:create_status).with(expected_toot, [])
+      end
+    end
+
+    context "When containing media" do
+      let(:tweet) do
+        tweets = fixture_tweets("search_twitter_including_media", "from:sue445")
+        tweets.find { |tweet| !tweet.media.empty? }
+      end
+
+      before do
+        allow(service).to receive(:upload_media_to_mastodon).with(twitter_media_url) { media }
+      end
+
+      let(:twitter_media_url) { "http://pbs.twimg.com/media/C_yFqwuXgAArPbc.jpg" }
+
+      let(:media) do
+        ::Mastodon::Media.new(
+          "id" => 963738,
+          "type" => "image",
+          "url" => "https://img.pawoo.net/media_attachments/files/000/963/738/original/f4cf3b55b7eec010.jpeg",
+          "preview_url" => "https://img.pawoo.net/media_attachments/files/000/963/738/small/f4cf3b55b7eec010.jpeg",
+          "text_url" => "https://pawoo.net/media/XZjAMJU2SQCKKHyuF2A",
+        )
+      end
+
+      it "should called @mastodon#create_status" do
+        expect(tweet).not_to be nil
+
+        allow(service.mastodon).to receive(:create_status)
+        subject
+
+        expected_toot = "https://t.co/614DF2MgmH https://t.co/D7kRGsA81L (via. Twitter https://twitter.com/sue445/status/863712200489402368)"
+        expect(service.mastodon).to have_received(:create_status).with(expected_toot, array_including(kind_of(Numeric)))
       end
     end
   end

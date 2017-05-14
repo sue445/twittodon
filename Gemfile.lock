@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/tootsuite/mastodon-api.git
+  revision: 39f4b0354f3c15075d16e9a810d695824a230b0b
+  ref: 39f4b0
+  branch: master
+  specs:
+    mastodon-api (1.1.0)
+      addressable (~> 2.4)
+      buftok
+      http (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -26,9 +37,6 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.2)
     http_parser.rb (0.6.0)
-    mastodon-api (1.1.0)
-      addressable (~> 2.4)
-      http (~> 2.0)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
@@ -108,7 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
-  mastodon-api
+  mastodon-api!
   mock_redis
   onkcop
   pry-byebug

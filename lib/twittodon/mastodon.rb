@@ -11,5 +11,9 @@ module Twittodon
     def create_status(text, media_ids = [])
       @client.create_status(text, nil, media_ids)
     end
+
+    def upload_media(file)
+      @client.upload_media(file)
+    end
   end
 end
