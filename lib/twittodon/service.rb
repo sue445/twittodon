@@ -41,17 +41,17 @@ module Twittodon
       tweets = @twitter.search(query, since_id).to_a.reverse
       @logger.info "Tweets count=#{tweets.count}"
 
-      unless tweets.empty?
-        unless since_id == UNKNOWN_SINCE_ID
-          tweets.each do |tweet|
-            toot_tweet(tweet)
-            # TODO: debug
-            # break
-          end
-        end
+      return if tweets.empty?
 
-        save_latest_id(query, tweets)
+      unless since_id == UNKNOWN_SINCE_ID
+        tweets.each do |tweet|
+          toot_tweet(tweet)
+          # TODO: debug
+          # break
+        end
       end
+
+      save_latest_id(query, tweets)
     end
 
     # @param tweet [Twitter::Tweet]
