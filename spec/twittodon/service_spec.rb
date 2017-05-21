@@ -35,13 +35,13 @@ describe Twittodon::Service do
     end
 
     context "When containing media" do
+      before do
+        allow(service.mastodon).to receive(:upload_media_url).with(twitter_media_url) { media }
+      end
+
       let(:tweet) do
         tweets = fixture_tweets("search_twitter_including_media", "from:sue445")
         tweets.find { |tweet| !tweet.media.empty? }
-      end
-
-      before do
-        allow(service.mastodon).to receive(:upload_media_url).with(twitter_media_url) { media }
       end
 
       let(:twitter_media_url) { "http://pbs.twimg.com/media/C_yFqwuXgAArPbc.jpg" }
