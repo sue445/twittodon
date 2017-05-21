@@ -1,5 +1,7 @@
 module Twittodon
   class Mastodon
+    attr_reader :client
+
     def initialize(mastodon_url:, access_token:)
       @client =
         ::Mastodon::REST::Client.new(
