@@ -1,6 +1,5 @@
 module Twittodon
   require "logger"
-  require "open-uri"
 
   class Service
     UNKNOWN_SINCE_ID = -1

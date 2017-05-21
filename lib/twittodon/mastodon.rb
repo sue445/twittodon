@@ -1,4 +1,6 @@
 module Twittodon
+  require "open-uri"
+
   class Mastodon
     attr_reader :client
 
