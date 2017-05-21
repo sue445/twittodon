@@ -77,23 +77,8 @@ module Twittodon
       return [] if uploadable_medias.empty?
 
       uploadable_medias.each_with_object([]) do |twitter_media, m|
-        m << upload_media_to_mastodon(twitter_media.media_url.to_s)
+        m << @mastodon.upload_media_url(twitter_media.media_url.to_s)
       end
-    end
-
-    # Download url and upload to mastodon
-    # @param media_url [String]
-    # @return [Mastodon::Media]
-    def upload_media_to_mastodon(media_url)
-      tempfile = Tempfile.open(["media", File.extname(media_url)])
-
-      open(media_url) do |input|
-        tempfile.write(input.read)
-      end
-
-      @mastodon.upload_media(HTTP::FormData::File.new(tempfile))
-    ensure
-      tempfile.close! if tempfile
     end
 
     private

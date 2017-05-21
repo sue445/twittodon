@@ -12,8 +12,19 @@ module Twittodon
       @client.create_status(text, nil, media_ids)
     end
 
-    def upload_media(file)
-      @client.upload_media(file)
+    # Download url and upload to mastodon
+    # @param media_url [String] url for upload file
+    # @return [Mastodon::Media]
+    def upload_media_url(media_url)
+      tempfile = Tempfile.open(["media", File.extname(media_url)])
+
+      open(media_url) do |input|
+        tempfile.write(input.read)
+      end
+
+      @client.upload_media(HTTP::FormData::File.new(tempfile))
+    ensure
+      tempfile.close! if tempfile
     end
   end
 end

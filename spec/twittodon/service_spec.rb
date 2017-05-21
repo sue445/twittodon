@@ -41,7 +41,7 @@ describe Twittodon::Service do
       end
 
       before do
-        allow(service).to receive(:upload_media_to_mastodon).with(twitter_media_url) { media }
+        allow(service.mastodon).to receive(:upload_media_url).with(twitter_media_url) { media }
       end
 
       let(:twitter_media_url) { "http://pbs.twimg.com/media/C_yFqwuXgAArPbc.jpg" }
