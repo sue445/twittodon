@@ -21,7 +21,7 @@ describe Twittodon::Service do
         fixture_tweets("search_twitter", "from:precure_app").first
       end
 
-      it "should called @mastodon#create_status" do
+      it "calleds @mastodon#create_status" do
         allow(service.mastodon).to receive(:create_status)
         subject
 
@@ -56,7 +56,7 @@ describe Twittodon::Service do
         )
       end
 
-      it "should called @mastodon#create_status" do
+      it "calleds @mastodon#create_status" do
         expect(tweet).not_to be nil
 
         allow(service.mastodon).to receive(:create_status)

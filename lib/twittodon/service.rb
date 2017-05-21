@@ -58,7 +58,7 @@ module Twittodon
     def toot_tweet(tweet)
       medias = upload_twitter_medias_to_mastodon(tweet.media)
 
-      toot = "#{tweet.text} (via. Twitter #{tweet.uri.to_s})"
+      toot = "#{tweet.text} (via. Twitter #{tweet.uri})"
       @mastodon.create_status(toot, medias.map(&:id))
       @logger.info "Toot to mastodon: #{toot}"
     end
@@ -73,7 +73,7 @@ module Twittodon
     def upload_twitter_medias_to_mastodon(twitter_medias)
       return [] if twitter_medias.empty?
 
-      uploadable_medias = twitter_medias.select{ |twitter_media| twitter_media.is_a?(::Twitter::Media::Photo) || twitter_media.is_a?(::Twitter::Media::AnimatedGif) }
+      uploadable_medias = twitter_medias.select { |twitter_media| twitter_media.is_a?(::Twitter::Media::Photo) || twitter_media.is_a?(::Twitter::Media::AnimatedGif) }
       return [] if uploadable_medias.empty?
 
       uploadable_medias.each_with_object([]) do |twitter_media, m|
@@ -116,7 +116,7 @@ if $PROGRAM_NAME == __FILE__
   )
 
   # service.perform(ENV["QUERY"])
-  #service.del_since_id_cache(ENV["QUERY"])
+  # service.del_since_id_cache(ENV["QUERY"])
 
   # media = service.upload_media_to_mastodon("https://pbs.twimg.com/media/C_yFqwuXgAArPbc.jpg")
   # puts "id=#{media.id}, type=#{media.type}, url=#{media.url}, preview_url=#{media.preview_url}, text_url=#{media.text_url}"
