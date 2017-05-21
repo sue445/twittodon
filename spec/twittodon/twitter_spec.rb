@@ -39,10 +39,10 @@ describe Twittodon::Twitter do
   describe "record fixture", record: true do
     let(:client) do
       Twittodon::Twitter.new(
-        consumer_key:        ENV["CONSUMER_KEY"],
-        consumer_secret:     ENV["CONSUMER_SECRET"],
-        access_token:        ENV["ACCESS_TOKEN"],
-        access_token_secret: ENV["ACCESS_TOKEN_SECRET"],
+        consumer_key:        ENV["TWITTER_CONSUMER_KEY"],
+        consumer_secret:     ENV["TWITTER_CONSUMER_SECRET"],
+        access_token:        ENV["TWITTER_ACCESS_TOKEN"],
+        access_token_secret: ENV["TWITTER_ACCESS_TOKEN_SECRET"],
       ).client
     end
 

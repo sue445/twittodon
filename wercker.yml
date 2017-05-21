@@ -38,6 +38,7 @@ build-rspec:
               export RUBYOPT=-EUTF-8
               export CI=true
               export CODECLIMATE_REPO_TOKEN=
+              export ENVIRONMENT=test
 
         - bundle-install:
             jobs: 4
