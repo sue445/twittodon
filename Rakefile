@@ -24,6 +24,6 @@ end
 
 desc "Post toot from twitter"
 task :perform => :environment do
-  ENV["MAX_COUNT"] ||= 10
-  @service.perform(ENV["QUERY"], ENV["MAX_COUNT"])
+  max_count = ENV["MAX_COUNT"] || 10
+  @service.perform(ENV["QUERY"], max_count.to_i)
 end
