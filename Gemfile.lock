@@ -120,6 +120,7 @@ DEPENDENCIES
   mock_redis
   onkcop
   pry-byebug
+  rake
   redis
   rspec
   rspec-power_assert
