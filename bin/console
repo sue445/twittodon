@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require_relative "../lib/twittodon"
+
+require "dotenv"
+require "pry"
+
+Dotenv.load
+
+redis = ::Redis.new(url: ENV["REDIS_URL"])
+
+@service = Twittodon::Service.new(
+  twitter_consumer_key:        ENV["TWITTER_CONSUMER_KEY"],
+  twitter_consumer_secret:     ENV["TWITTER_CONSUMER_SECRET"],
+  twitter_access_token:        ENV["TWITTER_ACCESS_TOKEN"],
+  twitter_access_token_secret: ENV["TWITTER_ACCESS_TOKEN_SECRET"],
+
+  mastodon_url:          ENV["MASTODON_URL"],
+  mastodon_access_token: ENV["MASTODON_ACCESS_TOKEN"],
+
+  redis: redis,
+)
+
+@twitter_client = @service.twitter.client
+@mastodon_client = @service.mastodon.client
+
+Pry.start
