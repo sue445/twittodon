@@ -7,6 +7,13 @@ module Twittodon
 
     attr_reader :twitter, :mastodon
 
+    # @param twitter_consumer_key [String]
+    # @param twitter_consumer_secret [String]
+    # @param twitter_access_token [String]
+    # @param twitter_access_token_secret [String]
+    # @param mastodon_url [String]
+    # @param mastodon_access_token [String]
+    # @param redis [Redis]
     def initialize(twitter_consumer_key:, twitter_consumer_secret:, twitter_access_token:, twitter_access_token_secret:,
                    mastodon_url:, mastodon_access_token:,
                    redis:)
@@ -28,6 +35,7 @@ module Twittodon
       @logger = ::Logger.new(STDOUT)
     end
 
+    # @param query [String] search query
     def perform(query)
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
       tweets = @twitter.search(query, since_id).to_a.reverse
@@ -46,6 +54,7 @@ module Twittodon
       end
     end
 
+    # @param tweet [Twitter::Tweet]
     def toot_tweet(tweet)
       medias = upload_twitter_medias_to_mastodon(tweet.media)
 
@@ -59,6 +68,8 @@ module Twittodon
       @logger.info "Delete redis key: #{redis_key(query)}"
     end
 
+    # @param twitter_medias [Array<Twitter::Media>]
+    # @return [Array<Mastodon::Media>]
     def upload_twitter_medias_to_mastodon(twitter_medias)
       return [] if twitter_medias.empty?
 
@@ -70,6 +81,9 @@ module Twittodon
       end
     end
 
+    # Download url and upload to mastodon
+    # @param media_url [String]
+    # @return [Mastodon::Media]
     def upload_media_to_mastodon(media_url)
       tempfile = Tempfile.open(["media", File.extname(media_url)])
 
