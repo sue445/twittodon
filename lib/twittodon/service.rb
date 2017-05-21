@@ -35,9 +35,10 @@ module Twittodon
     end
 
     # @param query [String] search query
-    def perform(query)
+    # @param max_count [Integer] Number of posts toot
+    def perform(query, max_count)
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
-      tweets = @twitter.search(query, since_id).to_a.reverse
+      tweets = @twitter.search(query, since_id).to_a.reverse.last(max_count)
       @logger.info "Tweets count=#{tweets.count}"
 
       return if tweets.empty?
@@ -45,12 +46,10 @@ module Twittodon
       unless since_id == UNKNOWN_SINCE_ID
         tweets.each do |tweet|
           toot_tweet(tweet)
-          # TODO: debug
-          # break
         end
       end
 
-      save_latest_id(query, tweets)
+      save_latest_id(query, tweets.last.id)
     end
 
     # @param tweet [Twitter::Tweet]
@@ -91,8 +90,7 @@ module Twittodon
         end
       end
 
-      def save_latest_id(query, tweets)
-        latest_id = tweets.last.id
+      def save_latest_id(query, latest_id)
         @redis.set(redis_key(query), latest_id)
         @logger.info "Save redis: #{redis_key(query)}=#{latest_id}"
       end
