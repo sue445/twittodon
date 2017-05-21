@@ -112,7 +112,7 @@ if $PROGRAM_NAME == __FILE__
 
   redis = ::Redis.new(url: ENV["REDIS_URL"])
 
-  service = Twittodon::Service.new(
+  _service = Twittodon::Service.new(
     twitter_consumer_key:        ENV["TWITTER_CONSUMER_KEY"],
     twitter_consumer_secret:     ENV["TWITTER_CONSUMER_SECRET"],
     twitter_access_token:        ENV["TWITTER_ACCESS_TOKEN"],
