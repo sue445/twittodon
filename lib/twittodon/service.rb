@@ -38,7 +38,7 @@ module Twittodon
     # @param max_count [Integer] Number of posts toot
     def perform(query, max_count)
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
-      tweets = @twitter.search(query: query, since_id: since_id).to_a.reverse.last(max_count)
+      tweets = @twitter.search(query: query, since_id: since_id, count: max_count).reverse
       @logger.info "Tweets count=#{tweets.count}"
 
       return if tweets.empty?
