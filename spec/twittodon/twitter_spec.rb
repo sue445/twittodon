@@ -8,30 +8,30 @@ describe Twittodon::Twitter do
     )
   end
 
-  let(:query) { "from:precure_app" }
+  let(:query) { "from:sue445" }
 
   let(:since_id) { -1 }
 
-  let(:fixture_name) { "search_twitter" }
+  let(:fixture_name) { "search_twitter_tweet_mode_extended" }
+
+  let(:count) { 10 }
 
   describe "#search" do
     subject do
-      result =
-        VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
-          twitter.search(query: query, since_id: since_id, count: 10)
-        end
-      result.to_a
+      VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
+        twitter.search(query: query, since_id: since_id, count: count).take(count)
+      end
     end
 
     it "works" do
       tweets = subject
 
       aggregate_failures do
-        is_asserted_by { tweets.count == 2 }
-        is_asserted_by { tweets[0].id == 862_564_095_446_327_296 }
-        is_asserted_by { tweets[0].user.screen_name == "precure_app" }
-        is_asserted_by { tweets[1].id == 862_233_084_392_988_672 }
-        is_asserted_by { tweets[1].user.screen_name == "precure_app" }
+        is_asserted_by { tweets.count == count }
+        is_asserted_by { tweets[0].id == 866_641_393_837_424_640 }
+        is_asserted_by { tweets[0].user.screen_name == "sue445" }
+        is_asserted_by { tweets[1].id == 866_638_054_651_445_249 }
+        is_asserted_by { tweets[1].user.screen_name == "sue445" }
       end
     end
   end
@@ -54,7 +54,7 @@ describe Twittodon::Twitter do
 
     it "works" do
       VCR.use_cassette fixture_name do
-        client.search(query, since_id: since_id, count: 10, tweet_mode: "extended")
+        client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
       end
     end
   end
