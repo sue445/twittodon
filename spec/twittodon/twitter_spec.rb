@@ -58,4 +58,28 @@ describe Twittodon::Twitter do
       end
     end
   end
+
+  describe ".expanded_urls_text" do
+    subject { Twittodon::Twitter.expand_urls_text(tweet) }
+
+    let(:tweet) { fixture_tweets(fixture_name, query)[3] }
+
+    it { should eq "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf" }
+  end
+
+  describe ".remove_media_urls_in_tweet" do
+    subject { Twittodon::Twitter.remove_media_urls_in_tweet(tweet, text) }
+
+    let(:text)  { tweet.text }
+    let(:tweet) { fixture_tweets(fixture_name, query)[7] }
+
+    it { should eq "RT @SazaeSurrealism: #sazae #sazaesan" }
+  end
+
+  def fixture_tweets(fixture_name, query)
+    since_id = -1
+    VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
+      twitter.client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
+    end
+  end
 end
