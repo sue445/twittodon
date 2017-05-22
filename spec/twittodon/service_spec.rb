@@ -13,23 +13,21 @@ describe Twittodon::Service do
     )
   end
 
+  let(:count) { 10 }
+
   describe "#toot_tweet" do
     subject { service.toot_tweet(tweet) }
 
     context "When not containing media" do
       let(:tweet) do
-        fixture_tweets("search_twitter", "from:precure_app").first
+        fixture_tweets("search_twitter_tweet_mode_extended", "from:sue445")[3]
       end
 
       it "calleds @mastodon#create_status" do
         allow(service.mastodon).to receive(:create_status)
         subject
 
-        expected_toot = <<~EOS.strip
-          【メンテナンス終了のお知らせ】
-          メンテナンスが予定通り終了しました。
-          DLはこちら→ https://t.co/ZF8NiA4asq     #キュアぱず (via. Twitter https://twitter.com/precure_app/status/862564095446327296)
-        EOS
+        expected_toot = "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” https://t.co/vG7cvDAMEb (via. Twitter https://twitter.com/sue445/status/866636479061147648)" # rubocop:disable Metrics/LineLength
         expect(service.mastodon).to have_received(:create_status).with(expected_toot, [])
       end
     end
@@ -40,11 +38,10 @@ describe Twittodon::Service do
       end
 
       let(:tweet) do
-        tweets = fixture_tweets("search_twitter_including_media", "from:sue445")
-        tweets.find { |tweet| !tweet.media.empty? }
+        fixture_tweets("search_twitter_tweet_mode_extended", "from:sue445")[8]
       end
 
-      let(:twitter_media_url) { "http://pbs.twimg.com/media/C_yFqwuXgAArPbc.jpg" }
+      let(:twitter_media_url) { "http://pbs.twimg.com/media/DAbk6P4XgAA2RSm.jpg" }
 
       let(:media) do
         ::Mastodon::Media.new(
@@ -57,12 +54,12 @@ describe Twittodon::Service do
       end
 
       it "calleds @mastodon#create_status" do
-        expect(tweet).not_to be nil
+        expect(tweet.media).not_to be nil
 
         allow(service.mastodon).to receive(:create_status)
         subject
 
-        expected_toot = "https://t.co/614DF2MgmH https://t.co/D7kRGsA81L (via. Twitter https://twitter.com/sue445/status/863712200489402368)"
+        expected_toot = "【ゆるぼ】 #キュアぱず フレンド募集中 \n\n6sup2e https://t.co/3WwBFHkTif (via. Twitter https://twitter.com/sue445/status/866631687920275456)"
         expect(service.mastodon).to have_received(:create_status).with(expected_toot, array_including(kind_of(Numeric)))
       end
     end
@@ -70,10 +67,8 @@ describe Twittodon::Service do
 
   def fixture_tweets(fixture_name, query)
     since_id = -1
-    result =
-      VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
-        service.twitter.search(query, since_id)
-      end
-    result.to_a
+    VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
+      service.twitter.client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
+    end
   end
 end
