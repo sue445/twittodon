@@ -56,7 +56,8 @@ module Twittodon
     def toot_tweet(tweet)
       medias = upload_twitter_medias_to_mastodon(tweet.media)
 
-      toot = "#{tweet.text} (via. Twitter #{tweet.uri})"
+      text = expanded_display_tweet(tweet)
+      toot = "#{text} (via. Twitter #{tweet.uri})"
       @mastodon.create_status(toot, medias.map(&:id))
       @logger.info "Toot to mastodon: #{toot}"
     end
@@ -97,6 +98,11 @@ module Twittodon
 
       def redis_key(query)
         "twittodon:#{query}"
+      end
+
+      def expanded_display_tweet(tweet)
+        expanded_text = Twittodon::Twitter.expand_urls_text(tweet)
+        Twittodon::Twitter.remove_media_urls_in_tweet(tweet, expanded_text)
       end
   end
 end
