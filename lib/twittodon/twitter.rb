@@ -15,5 +15,17 @@ module Twittodon
     def search(query:, since_id: -1, count: 10)
       client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
     end
+
+    # @param tweet [Twitter:Tweet]
+    # @return [String]
+    def self.expand_urls_text(tweet)
+      return tweet.text unless tweet.uris?
+
+      tweet.uris.reverse.each_with_object(tweet.text.dup) do |uri, expanded|
+        pos1 = uri.indices[0]
+        pos2 = uri.indices[1]
+        expanded[pos1, pos2] = uri.expanded_url
+      end
+    end
   end
 end
