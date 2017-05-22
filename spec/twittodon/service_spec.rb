@@ -72,7 +72,7 @@ describe Twittodon::Service do
     since_id = -1
     result =
       VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
-        service.twitter.search(query, since_id)
+        service.twitter.client.search(query, since_id: since_id, count: 10)
       end
     result.to_a
   end
