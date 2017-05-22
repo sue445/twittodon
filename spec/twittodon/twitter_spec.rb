@@ -50,11 +50,11 @@ describe Twittodon::Twitter do
 
     let(:since_id) { -1 }
 
-    let(:fixture_name) { "search_twitter_including_media" }
+    let(:fixture_name) { "search_twitter_tweet_mode_extended" }
 
     it "works" do
       VCR.use_cassette fixture_name do
-        client.search(query, since_id: since_id, count: 10)
+        client.search(query, since_id: since_id, count: 10, tweet_mode: "extended")
       end
     end
   end
