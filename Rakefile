@@ -27,3 +27,10 @@ task :perform => :environment do
   max_count = ENV["MAX_COUNT"] || 10
   @service.perform(ENV["QUERY"], max_count.to_i)
 end
+
+namespace :since_id do
+  desc "Display all since_ids"
+  task :display => :environment do
+    @service.display_since_ids
+  end
+end
