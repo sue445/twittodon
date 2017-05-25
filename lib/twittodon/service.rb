@@ -4,6 +4,8 @@ module Twittodon
   class Service
     UNKNOWN_SINCE_ID = -1
 
+    REDIS_KEY_PREFIX = "twittodon:".freeze
+
     attr_reader :twitter, :mastodon
 
     # @param twitter_consumer_key [String]
@@ -62,9 +64,27 @@ module Twittodon
       @logger.info "Toot to mastodon: #{toot}"
     end
 
-    def del_since_id_cache(query)
+    def delete_since_id(query)
+      since_id = @redis.get(redis_key(query))
       @redis.del(redis_key(query))
-      @logger.info "Delete redis key: #{redis_key(query)}"
+      @logger.info "Deleted query='#{query}', since_id=#{since_id}"
+    end
+
+    def delete_all_since_ids
+      since_id_keys = @redis.keys("#{REDIS_KEY_PREFIX}*")
+      since_id_keys.each do |key|
+        query = key.gsub(REDIS_KEY_PREFIX, "")
+        delete_since_id(query)
+      end
+    end
+
+    def display_since_ids
+      since_id_keys = @redis.keys("#{REDIS_KEY_PREFIX}*")
+      since_id_keys.each do |key|
+        since_id = @redis.get(key)
+        query = key.gsub(REDIS_KEY_PREFIX, "")
+        @logger.info "query='#{query}', since_id=#{since_id}"
+      end
     end
 
     # @param twitter_medias [Array<Twitter::Media>]
@@ -97,7 +117,7 @@ module Twittodon
       end
 
       def redis_key(query)
-        "twittodon:#{query}"
+        "#{REDIS_KEY_PREFIX}#{query}"
       end
 
       def expanded_display_tweet(tweet)
