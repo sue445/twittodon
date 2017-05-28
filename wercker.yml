@@ -67,16 +67,16 @@ build-rubocop:
             name: rubocop
             code: bundle exec rubocop
 
-# deploy:
-#     steps:
-#         - heroku-deploy:
-#             install-toolbelt: true
-#             keep-repository: true
-#             key-name: WERCKER_HEROKU_DEPLOY
-#             app-name: $HEROKU_APP_NAME
-#             key: $HEROKU_KEY
-#
-#     after-steps:
-#         - wantedly/pretty-slack-notify:
-#             webhook_url: $SLACK_WEBHOOK_URL
-#             username: wercker_build
+deploy:
+    steps:
+        - heroku-deploy:
+            install-toolbelt: true
+            keep-repository: true
+            key-name: WERCKER_HEROKU_DEPLOY
+            app-name: $HEROKU_APP_NAME
+            key: $HEROKU_KEY
+
+    after-steps:
+        - wantedly/pretty-slack-notify:
+            webhook_url: $SLACK_WEBHOOK_URL
+            username: wercker_build
