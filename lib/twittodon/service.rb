@@ -47,7 +47,9 @@ module Twittodon
 
       unless since_id == UNKNOWN_SINCE_ID
         tweets.each do |tweet|
-          toot_tweet(tweet)
+          capture_error do
+            toot_tweet(tweet)
+          end
         end
       end
 
@@ -123,6 +125,18 @@ module Twittodon
       def expanded_display_tweet(tweet)
         expanded_text = Twittodon::Twitter.expand_urls_text(tweet)
         Twittodon::Twitter.remove_media_urls_in_tweet(tweet, expanded_text)
+      end
+
+      # Ignore error (but send to rollbar)
+      def capture_error
+        yield
+      rescue Exception => error # rubocop:disable Lint/RescueException
+        puts error.message
+        error.backtrace.each do |backtrace|
+          puts backtrace
+        end
+
+        Rollbar.error(error)
       end
   end
 end

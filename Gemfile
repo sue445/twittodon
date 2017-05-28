@@ -10,6 +10,7 @@ gem "mastodon-api", require: "mastodon", github: "tootsuite/mastodon-api", branc
 
 gem "rake", require: false
 gem "redis"
+gem "rollbar"
 gem "twitter"
 
 group :development do

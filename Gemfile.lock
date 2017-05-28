@@ -41,6 +41,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mock_redis (0.17.3)
+    multi_json (1.12.1)
     multipart-post (2.0.0)
     naught (1.1.0)
     onkcop (0.48.1.1)
@@ -62,6 +63,8 @@ GEM
       rake
     rake (12.0.0)
     redis (3.3.3)
+    rollbar (2.14.1)
+      multi_json
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -122,6 +125,7 @@ DEPENDENCIES
   pry-byebug
   rake
   redis
+  rollbar
   rspec
   rspec-power_assert
   twitter
