@@ -27,7 +27,7 @@ describe Twittodon::Service do
         allow(service.mastodon).to receive(:create_status)
         subject
 
-        expected_toot = "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf (via. Twitter https://twitter.com/sue445/status/866636479061147648)" # rubocop:disable Metrics/LineLength
+        expected_toot = "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf\n\n(via. Twitter https://twitter.com/sue445/status/866636479061147648)" # rubocop:disable Metrics/LineLength
         expect(service.mastodon).to have_received(:create_status).with(expected_toot, [])
       end
     end
@@ -59,7 +59,7 @@ describe Twittodon::Service do
         allow(service.mastodon).to receive(:create_status)
         subject
 
-        expected_toot = "【ゆるぼ】 #キュアぱず フレンド募集中 \n\n6sup2e (via. Twitter https://twitter.com/sue445/status/866631687920275456)"
+        expected_toot = "【ゆるぼ】 #キュアぱず フレンド募集中 \n\n6sup2e\n\n(via. Twitter https://twitter.com/sue445/status/866631687920275456)"
         expect(service.mastodon).to have_received(:create_status).with(expected_toot, array_including(kind_of(Numeric)))
       end
     end

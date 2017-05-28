@@ -61,7 +61,7 @@ module Twittodon
       medias = upload_twitter_medias_to_mastodon(tweet.media)
 
       text = expanded_display_tweet(tweet)
-      toot = "#{text} (via. Twitter #{tweet.uri})"
+      toot = "#{text}\n\n(via. Twitter #{tweet.uri})"
       @mastodon.create_status(toot, medias.map(&:id))
       @logger.info "Toot to mastodon: #{toot}"
     end
