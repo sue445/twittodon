@@ -21,4 +21,10 @@ heroku addons:add rollbar
 heroku addons:add scheduler
 
 heroku config:add ENVIRONMENT=production
+heroku config:add TWITTER_CONSUMER_KEY=XXXXXXXXXXXXXX
+heroku config:add TWITTER_CONSUMER_SECRET=XXXXXXXXXXXXXX
+heroku config:add TWITTER_ACCESS_TOKEN=XXXXXXXXXXXXXX
+heroku config:add TWITTER_ACCESS_TOKEN_SECRET=XXXXXXXXXXXXXX
+heroku config:add MASTODON_URL=https://mastodon.example.com
+heroku config:add MASTODON_ACCESS_TOKEN=XXXXXXXXXXXXXX
 ```
