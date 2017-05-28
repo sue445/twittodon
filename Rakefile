@@ -1,3 +1,5 @@
+require "rollbar/rake_tasks"
+
 task :environment do
   require_relative "./lib/twittodon"
 
@@ -5,6 +7,10 @@ task :environment do
     require "dotenv"
     Dotenv.load
   rescue LoadError # rubocop:disable Lint/HandleExceptions
+  end
+
+  Rollbar.configure do |config|
+    config.access_token = ENV["ROLLBAR_ACCESS_TOKEN"]
   end
 
   redis = ::Redis.new(url: ENV["REDIS_URL"])
