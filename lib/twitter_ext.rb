@@ -2,7 +2,7 @@ require "twitter"
 
 module FullTextExt
   def text
-    @attrs[:text] || @attrs[:full_text]
+    @attrs[:full_text] || @attrs[:text]
   end
 end
 
