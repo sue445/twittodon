@@ -133,7 +133,7 @@ module Twittodon
       rescue Exception => error # rubocop:disable Lint/RescueException
         puts error.message
         error.backtrace.each do |backtrace|
-          puts backtrace
+          puts "        from #{backtrace}"
         end
 
         Rollbar.error(error)
