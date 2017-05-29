@@ -41,6 +41,9 @@ module Twittodon
     def perform(query, max_count)
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
       tweets = @twitter.search(query: query, since_id: since_id, count: max_count).reverse
+
+      tweets.reject!(&:reply?)
+
       @logger.info "Tweets count=#{tweets.count}"
 
       return if tweets.empty?
