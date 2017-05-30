@@ -1,6 +1,4 @@
 module Twittodon
-  require "logger"
-
   class Service
     UNKNOWN_SINCE_ID = -1
 
@@ -32,8 +30,6 @@ module Twittodon
       )
 
       @redis = redis
-
-      @logger = ::Logger.new(STDOUT)
     end
 
     # @param query [String] search query
@@ -44,7 +40,7 @@ module Twittodon
 
       tweets.reject!(&:reply?)
 
-      @logger.info "Tweets count=#{tweets.count}"
+      puts "Tweets count=#{tweets.count}"
 
       return if tweets.empty?
 
@@ -66,13 +62,13 @@ module Twittodon
       text = expanded_display_tweet(tweet)
       toot = "#{text}\n\n(via. Twitter #{tweet.uri})"
       @mastodon.create_status(toot, medias.map(&:id))
-      @logger.info "Toot to mastodon: #{toot}"
+      puts "Toot to mastodon: #{toot}"
     end
 
     def delete_since_id(query)
       since_id = @redis.get(redis_key(query))
       @redis.del(redis_key(query))
-      @logger.info "Deleted query='#{query}', since_id=#{since_id}"
+      puts "Deleted query='#{query}', since_id=#{since_id}"
     end
 
     def delete_all_since_ids
@@ -88,7 +84,7 @@ module Twittodon
       since_id_keys.each do |key|
         since_id = @redis.get(key)
         query = key.gsub(REDIS_KEY_PREFIX, "")
-        @logger.info "query='#{query}', since_id=#{since_id}"
+        puts "query='#{query}', since_id=#{since_id}"
       end
     end
 
@@ -118,7 +114,7 @@ module Twittodon
 
       def save_latest_id(query, latest_id)
         @redis.set(redis_key(query), latest_id)
-        @logger.info "Save redis: #{redis_key(query)}=#{latest_id}"
+        puts "Save redis: #{redis_key(query)}=#{latest_id}"
       end
 
       def redis_key(query)
