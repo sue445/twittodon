@@ -1,0 +1,39 @@
+{
+  "name": "twittodon",
+  "description": "Search specific tweet and post toot to mastodon",
+  "website": "https://github.com/sue445/twittodon",
+  "keywords": ["ruby", "Mastodon", "Twitter", "Bot"],
+  "env": {
+    "BUNDLE_WITHOUT": {
+      "description": "bundle install --without <these>",
+      "value": "test:development"
+    },
+    "ENVIRONMENT": {
+      "value": "production"
+    },
+    "TWITTER_CONSUMER_KEY": {
+      "description": "Twitter Consumer Key (API Key)"
+    },
+    "TWITTER_CONSUMER_SECRET": {
+      "description": "Twitter Consumer Secret (API Secret)"
+    },
+    "TWITTER_ACCESS_TOKEN": {
+      "description": "Twitter Access Token"
+    },
+    "TWITTER_ACCESS_TOKEN_SECRET": {
+      "description": "Twitter Access Token Secret"
+    },
+    "MASTODON_URL": {
+      "description": "Mastodon instance url (e.g. https://mastodon.social)"
+    },
+    "MASTODON_ACCESS_TOKEN": {
+      "description": "Mastodon access_token"
+    }
+  },
+  "addons": [
+    "heroku-redis",
+    "papertrail",
+    "rollbar",
+    "scheduler"
+  ]
+}
