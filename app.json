@@ -28,6 +28,11 @@
     },
     "MASTODON_ACCESS_TOKEN": {
       "description": "Mastodon access_token"
+    },
+    "MAX_COUNT": {
+      "description": "Max tweet count (default is 10)",
+      "value": "10",
+      "required": false
     }
   },
   "addons": [
