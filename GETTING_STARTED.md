@@ -54,9 +54,23 @@ $ curl -X POST -d "client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&grant_type=
 * `access_token`
 
 # 3. Deploy to Heroku 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+Click this
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+Input these and deploy.
+
+![Heroku config variables](img/heroku_config_variables.png)
 
 # 4. Register to Heroku scheduler
+Open `Manage App`
+
+![Heroku deploy finish](img/heroku_deploy_finish.png)
+
+Open `Heroku Scheduler`
+
+![Heroku installed add-ons](img/heroku_installed_addons.png)
+
 Register `QUERY="TWITTER_SEATCH_QUERY" bundle exec rake perform`
 
 Example
