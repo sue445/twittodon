@@ -37,7 +37,7 @@ build-rspec:
             code: |
               export RUBYOPT=-EUTF-8
               export CI=true
-              export CODECLIMATE_REPO_TOKEN=
+              export CODECLIMATE_REPO_TOKEN=fb053c37b86d20c818148ec76e02261fbcd09845d3076c43d9617c58a6e5a50c
               export ENVIRONMENT=test
 
         - bundle-install:
@@ -47,9 +47,9 @@ build-rspec:
             name: rspec
             code: bundle exec rspec
 
-        # - script:
-        #     name: send report to codeclimate
-        #     code: bundle exec codeclimate-test-reporter
+        - script:
+            name: send report to codeclimate
+            code: bundle exec codeclimate-test-reporter
 
 build-rubocop:
     <<: *default
