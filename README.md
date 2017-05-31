@@ -4,6 +4,7 @@ Search specific tweet and post toot to mastodon
 [![wercker status](https://app.wercker.com/status/17b86a545fd6c33053387b3fe3723796/m/master "wercker status")](https://app.wercker.com/project/byKey/17b86a545fd6c33053387b3fe3723796)
 
 [![Dependency Status](https://gemnasium.com/badges/github.com/sue445/twittodon.svg)](https://gemnasium.com/github.com/sue445/twittodon)
+[![Coverage Status](https://coveralls.io/repos/github/sue445/twittodon/badge.svg?branch=master)](https://coveralls.io/github/sue445/twittodon?branch=master)
 
 ## Features
 * Search specific tweet

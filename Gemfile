@@ -20,6 +20,7 @@ group :development do
 end
 
 group :test do
+  gem "coveralls", require: false
   gem "mock_redis"
   gem "rspec"
   gem "rspec-power_assert"
