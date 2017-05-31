@@ -76,7 +76,11 @@ Deleted query='from:sue445 -RT #precure', since_id=869561044380786688
 ```bash
 bundle install
 cp .env.example .env
+vi .env
 ```
+
+### Environment variables
+All available environment variables are [here](.env.example)
 
 ## Heroku
 ### Setup
