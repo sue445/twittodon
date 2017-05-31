@@ -10,6 +10,8 @@ Search specific tweet and post toot to mastodon
 * When tweet contains media (e.g. photo, animation gif), download from twitter and upload mastodon
 * Supports *Deploy to Heroku* (1 click deploy :triumph:)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Getting Started
 Read [GETTING_STARTED.md](GETTING_STARTED.md)
 
