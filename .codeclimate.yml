@@ -1,0 +1,4 @@
+engines:
+  rubocop:
+    # NOTE: onkcop is not installed at codeclimate
+    enabled: false
