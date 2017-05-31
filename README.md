@@ -3,6 +3,13 @@ Search specific tweet and post toot to mastodon
 
 [![wercker status](https://app.wercker.com/status/17b86a545fd6c33053387b3fe3723796/m/master "wercker status")](https://app.wercker.com/project/byKey/17b86a545fd6c33053387b3fe3723796)
 
+## Features
+* Search specific tweet
+  * Using Search API https://dev.twitter.com/rest/public/search
+* Post toot to specific Mastodon instance
+* When tweet contains media (e.g. photo, animation gif), download from twitter and upload mastodon
+* Supports *Deploy to Heroku* (1 click deploy :triumph:)
+
 ## Getting Started
 Read [GETTING_STARTED.md](GETTING_STARTED.md)
 
