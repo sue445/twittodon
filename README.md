@@ -3,6 +3,8 @@ Search specific tweet and post toot to mastodon
 
 [![wercker status](https://app.wercker.com/status/17b86a545fd6c33053387b3fe3723796/m/master "wercker status")](https://app.wercker.com/project/byKey/17b86a545fd6c33053387b3fe3723796)
 
+[![Dependency Status](https://gemnasium.com/badges/github.com/sue445/twittodon.svg)](https://gemnasium.com/github.com/sue445/twittodon)
+
 ## Features
 * Search specific tweet
   * Using Search API https://dev.twitter.com/rest/public/search
