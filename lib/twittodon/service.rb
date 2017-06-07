@@ -123,7 +123,9 @@ module Twittodon
 
       def expanded_display_tweet(tweet)
         expanded_text = Twittodon::Twitter.expand_urls_text(tweet)
-        Twittodon::Twitter.remove_media_urls_in_tweet(tweet, expanded_text)
+        expanded_text = Twittodon::Twitter.remove_media_urls_in_tweet(tweet, expanded_text)
+        expanded_text = CGI.unescapeHTML(expanded_text)
+        expanded_text
       end
 
       # Ignore error (but send to rollbar)
