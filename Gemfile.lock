@@ -57,7 +57,7 @@ GEM
     onkcop (0.49.1.0)
       rubocop (~> 0.49.1)
       rubocop-rspec (>= 1.15.1)
-    parallel (1.11.2)
+    parallel (1.12.0)
     parser (2.4.0.0)
       ast (~> 2.2)
     power_assert (1.0.2)
