@@ -11,6 +11,7 @@ gem "mastodon-api", require: "mastodon", github: "tootsuite/mastodon-api", branc
 gem "rake", require: false
 gem "redis"
 gem "rollbar"
+gem "tweet_sanitizer"
 gem "twitter"
 
 group :development do

@@ -115,6 +115,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tins (1.15.0)
+    tweet_sanitizer (0.1.0)
+      twitter
     twitter (6.1.0)
       addressable (~> 2.5)
       buftok (~> 0.2.0)
@@ -151,9 +153,10 @@ DEPENDENCIES
   rollbar
   rspec
   rspec-power_assert
+  tweet_sanitizer
   twitter
   vcr
   webmock
 
 BUNDLED WITH
-   1.14.6
+   1.15.3
