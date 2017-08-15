@@ -6,6 +6,8 @@ module Twittodon
 
     attr_reader :twitter, :mastodon
 
+    using TweetSanitizer::TwitterExtension
+
     # @param twitter_consumer_key [String]
     # @param twitter_consumer_secret [String]
     # @param twitter_access_token [String]
@@ -59,7 +61,7 @@ module Twittodon
     def toot_tweet(tweet)
       medias = upload_twitter_medias_to_mastodon(tweet.media)
 
-      text = expanded_display_tweet(tweet)
+      text = tweet.sanitized_text
       toot = "#{text}\n\n(via. Twitter #{tweet.uri})"
       @mastodon.create_status(toot, medias.map(&:id))
       puts "Toot to mastodon: #{toot}"
@@ -119,13 +121,6 @@ module Twittodon
 
       def redis_key(query)
         "#{REDIS_KEY_PREFIX}#{query}"
-      end
-
-      def expanded_display_tweet(tweet)
-        expanded_text = Twittodon::Twitter.expand_urls_text(tweet)
-        expanded_text = Twittodon::Twitter.remove_media_urls_in_tweet(tweet, expanded_text)
-        expanded_text = CGI.unescapeHTML(expanded_text)
-        expanded_text
       end
 
       # Ignore error (but send to rollbar)
