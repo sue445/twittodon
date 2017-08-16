@@ -38,6 +38,8 @@ module Twittodon
     # @param max_count [Integer] Number of posts toot
     def perform(query, max_count)
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
+      puts "query=#{query}, since_id=#{since_id}"
+
       tweets = @twitter.search(query: query, since_id: since_id, count: max_count).reverse
 
       save_latest_id(query, tweets.last.id) unless tweets.empty?
