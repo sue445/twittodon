@@ -1,5 +1,5 @@
 module Twittodon
-  class Service
+  class Service # rubocop:disable Metrics/ClassLength
     UNKNOWN_SINCE_ID = -1
 
     REDIS_KEY_PREFIX = "twittodon:".freeze
