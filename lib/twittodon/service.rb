@@ -42,17 +42,25 @@ module Twittodon
 
       save_latest_id(query, tweets.last.id) unless tweets.empty?
 
+      puts "Tweets (including reply) count=#{tweets.count}"
+
       tweets.reject!(&:reply?)
 
       puts "Tweets count=#{tweets.count}"
 
-      return if tweets.empty?
+      if tweets.empty?
+        puts "Skip toot because tweet count is 0"
+        return
+      end
 
-      unless since_id == UNKNOWN_SINCE_ID
-        tweets.each do |tweet|
-          capture_error do
-            toot_tweet(tweet)
-          end
+      if since_id == UNKNOWN_SINCE_ID
+        puts "Skip toot because since_id is #{UNKNOWN_SINCE_ID}"
+        return
+      end
+
+      tweets.each do |tweet|
+        capture_error do
+          toot_tweet(tweet)
         end
       end
     end
