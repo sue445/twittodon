@@ -40,21 +40,29 @@ module Twittodon
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
       tweets = @twitter.search(query: query, since_id: since_id, count: max_count).reverse
 
+      save_latest_id(query, tweets.last.id) unless tweets.empty?
+
+      puts "Tweets (including reply) count=#{tweets.count}"
+
       tweets.reject!(&:reply?)
 
       puts "Tweets count=#{tweets.count}"
 
-      return if tweets.empty?
-
-      unless since_id == UNKNOWN_SINCE_ID
-        tweets.each do |tweet|
-          capture_error do
-            toot_tweet(tweet)
-          end
-        end
+      if tweets.empty?
+        puts "Skip toot because tweet count is 0"
+        return
       end
 
-      save_latest_id(query, tweets.last.id)
+      if since_id == UNKNOWN_SINCE_ID
+        puts "Skip toot because since_id is #{UNKNOWN_SINCE_ID}"
+        return
+      end
+
+      tweets.each do |tweet|
+        capture_error do
+          toot_tweet(tweet)
+        end
+      end
     end
 
     # @param tweet [Twitter::Tweet]
