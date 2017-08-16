@@ -40,6 +40,8 @@ module Twittodon
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
       tweets = @twitter.search(query: query, since_id: since_id, count: max_count).reverse
 
+      save_latest_id(query, tweets.last.id) unless tweets.empty?
+
       tweets.reject!(&:reply?)
 
       puts "Tweets count=#{tweets.count}"
@@ -53,8 +55,6 @@ module Twittodon
           end
         end
       end
-
-      save_latest_id(query, tweets.last.id)
     end
 
     # @param tweet [Twitter::Tweet]
