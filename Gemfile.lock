@@ -73,7 +73,7 @@ GEM
       rake
     rake (12.2.1)
     redis (4.0.1)
-    rollbar (2.15.4)
+    rollbar (2.15.5)
       multi_json
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
