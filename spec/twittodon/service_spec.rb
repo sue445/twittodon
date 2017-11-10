@@ -18,7 +18,7 @@ describe Twittodon::Service do
   describe "#toot_tweet" do
     subject { service.toot_tweet(tweet) }
 
-    context "When not containing media" do
+    context "when not containing media" do
       let(:tweet) do
         fixture_tweets("search_twitter_tweet_mode_extended", "from:sue445")[3]
       end
@@ -32,7 +32,7 @@ describe Twittodon::Service do
       end
     end
 
-    context "When containing media" do
+    context "when containing media" do
       before do
         allow(service.mastodon).to receive(:upload_media_url).with(twitter_media_url) { media }
       end
