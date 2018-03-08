@@ -22,7 +22,7 @@ module Twittodon
     def upload_media_url(media_url)
       tempfile = Tempfile.open(["media", File.extname(media_url)])
 
-      open(media_url) do |input|
+      open(media_url) do |input| # rubocop:disable Security/Open
         tempfile.write(input.read)
       end
 
