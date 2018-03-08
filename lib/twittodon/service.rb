@@ -105,7 +105,7 @@ module Twittodon
     def upload_twitter_medias_to_mastodon(twitter_medias)
       return [] if twitter_medias.empty?
 
-      uploadable_medias = twitter_medias.select { |twitter_media| uploadable_media?(twitter_media) }
+      uploadable_medias = twitter_medias.select {|twitter_media| uploadable_media?(twitter_media) }
       return [] if uploadable_medias.empty?
 
       uploadable_medias.each_with_object([]) do |twitter_media, m|
