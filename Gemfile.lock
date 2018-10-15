@@ -113,7 +113,7 @@ GEM
       tins (~> 1.0)
     thor (0.19.4)
     thread_safe (0.3.6)
-    tins (1.16.3)
+    tins (1.17.0)
     tweet_sanitizer (0.2.0)
       twitter
     twitter (6.1.0)
