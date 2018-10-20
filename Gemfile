@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "2.5.1"
+ruby "2.5.3"
 
 # NOTE: https://github.com/tootsuite/mastodon-api/pull/11 is not released
 # TODO: Use rubygems.org instead of github after v1.1.0+ is released
