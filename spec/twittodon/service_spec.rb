@@ -6,10 +6,10 @@ describe Twittodon::Service do
       twitter_access_token:        "",
       twitter_access_token_secret: "",
 
-      mastodon_url:          "",
-      mastodon_access_token: "",
+      mastodon_url:                "",
+      mastodon_access_token:       "",
 
-      redis: Redis.current,
+      redis:                       Redis.current,
     )
   end
 
@@ -45,11 +45,11 @@ describe Twittodon::Service do
 
       let(:media) do
         ::Mastodon::Media.new(
-          "id" => 963738,
-          "type" => "image",
-          "url" => "https://img.pawoo.net/media_attachments/files/000/963/738/original/f4cf3b55b7eec010.jpeg",
+          "id"          => 963738,
+          "type"        => "image",
+          "url"         => "https://img.pawoo.net/media_attachments/files/000/963/738/original/f4cf3b55b7eec010.jpeg",
           "preview_url" => "https://img.pawoo.net/media_attachments/files/000/963/738/small/f4cf3b55b7eec010.jpeg",
-          "text_url" => "https://pawoo.net/media/XZjAMJU2SQCKKHyuF2A",
+          "text_url"    => "https://pawoo.net/media/XZjAMJU2SQCKKHyuF2A",
         )
       end
 

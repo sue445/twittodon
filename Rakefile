@@ -21,10 +21,10 @@ task :environment do
     twitter_access_token:        ENV["TWITTER_ACCESS_TOKEN"],
     twitter_access_token_secret: ENV["TWITTER_ACCESS_TOKEN_SECRET"],
 
-    mastodon_url:          ENV["MASTODON_URL"],
-    mastodon_access_token: ENV["MASTODON_ACCESS_TOKEN"],
+    mastodon_url:                ENV["MASTODON_URL"],
+    mastodon_access_token:       ENV["MASTODON_ACCESS_TOKEN"],
 
-    redis: redis,
+    redis:                       redis,
   )
 end
 
