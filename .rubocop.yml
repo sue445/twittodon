@@ -10,11 +10,11 @@ AllCops:
   # uncomment if use rails cops
   # TargetRailsVersion: 5.0
 
-Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: comma
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
 
 Metrics/ParameterLists:
   Max: 7
 
-Layout/EmptyLinesAroundArguments:
-  Enabled: false
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
