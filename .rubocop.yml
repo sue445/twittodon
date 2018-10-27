@@ -10,6 +10,10 @@ AllCops:
   # uncomment if use rails cops
   # TargetRailsVersion: 5.0
 
+Layout/AlignHash:
+  EnforcedColonStyle:      table
+  EnforcedHashRocketStyle: table
+
 Layout/EmptyLinesAroundArguments:
   Enabled: false
 
