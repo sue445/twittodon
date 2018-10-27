@@ -10,11 +10,15 @@ AllCops:
   # uncomment if use rails cops
   # TargetRailsVersion: 5.0
 
-Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: comma
+Layout/AlignHash:
+  EnforcedColonStyle:      table
+  EnforcedHashRocketStyle: table
+
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
 
 Metrics/ParameterLists:
   Max: 7
 
-Layout/EmptyLinesAroundArguments:
-  Enabled: false
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
