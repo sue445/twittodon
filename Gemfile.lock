@@ -50,7 +50,7 @@ GEM
     json (2.1.0)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    method_source (0.9.0)
+    method_source (0.9.1)
     mock_redis (0.19.0)
     multi_json (1.13.1)
     multipart-post (2.0.0)
