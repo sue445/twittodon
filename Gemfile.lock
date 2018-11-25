@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/tootsuite/mastodon-api.git
+  remote: https://github.com/tootsuite/mastodon-api
   revision: 39f4b0354f3c15075d16e9a810d695824a230b0b
   ref: 39f4b0
   branch: master
