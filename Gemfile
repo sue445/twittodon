@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-ruby "2.5.3"
+ruby "2.6.0"
 
 # NOTE: https://github.com/tootsuite/mastodon-api/pull/11 is not released
 # TODO: Use rubygems.org instead of github after v1.1.0+ is released
