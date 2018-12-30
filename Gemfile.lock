@@ -34,7 +34,7 @@ GEM
     equalizer (0.0.11)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
-    hashdiff (0.3.7)
+    hashdiff (0.3.8)
     http (2.2.2)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
