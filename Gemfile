@@ -6,10 +6,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 ruby "2.6.0"
 
-# NOTE: https://github.com/tootsuite/mastodon-api/pull/11 is not released
-# TODO: Use rubygems.org instead of github after v1.1.0+ is released
-gem "mastodon-api", require: "mastodon", github: "tootsuite/mastodon-api", branch: "master", ref: "39f4b0"
-
+gem "mastodon-api", ">= 2.0.0", require: "mastodon"
 gem "rake", require: false
 gem "redis"
 gem "rollbar"
