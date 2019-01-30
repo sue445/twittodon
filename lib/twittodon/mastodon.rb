@@ -13,7 +13,11 @@ module Twittodon
     end
 
     def create_status(text, media_ids = [])
-      @client.create_status(text, nil, media_ids)
+      if media_ids.empty?
+        @client.create_status(text)
+      else
+        @client.create_status(text, media_ids: media_ids)
+      end
     end
 
     # Download url and upload to mastodon
@@ -26,7 +30,7 @@ module Twittodon
         tempfile.write(input.read)
       end
 
-      @client.upload_media(HTTP::FormData::File.new(tempfile))
+      @client.upload_media(tempfile.path)
     ensure
       tempfile.close! if tempfile
     end

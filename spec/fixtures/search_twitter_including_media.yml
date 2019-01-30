@@ -13,7 +13,7 @@ http_interactions:
       - TwitterRubyGem/6.1.0
       Authorization:
       - OAuth oauth_consumer_key="XXXXXXXXXXXXXXXXXXX", oauth_nonce="XXXXXXXXXXXXXXXXXXX",
-        oauth_signature="%XXXXXXXXXXXXXXXXXXX", oauth_signature_method="HMAC-SHA1",
+        oauth_signature="XXXXXXXXXXXXXXXXXXX", oauth_signature_method="HMAC-SHA1",
         oauth_timestamp="XXXXXXXXXXXXXXXXXXX", oauth_token="14540215-XXXXXXXXXXXXXXXXXXX",
         oauth_version="1.0"
       Accept-Encoding:
