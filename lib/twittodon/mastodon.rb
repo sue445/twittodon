@@ -30,7 +30,7 @@ module Twittodon
         tempfile.write(input.read)
       end
 
-      @client.upload_media(HTTP::FormData::File.new(tempfile))
+      @client.upload_media(tempfile.path)
     ensure
       tempfile.close! if tempfile
     end
