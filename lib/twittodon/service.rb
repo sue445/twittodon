@@ -136,13 +136,13 @@ module Twittodon
       # Ignore error (but send to rollbar)
       def capture_error
         yield
-      rescue Exception => error # rubocop:disable Lint/RescueException
-        puts error.message
-        error.backtrace.each do |backtrace|
+      rescue Exception => e # rubocop:disable Lint/RescueException
+        puts e.message
+        e.backtrace.each do |backtrace|
           puts "        from #{backtrace}"
         end
 
-        Rollbar.error(error)
+        Rollbar.error(e)
       end
   end
 end
