@@ -19,6 +19,9 @@ Layout/AlignHash:
 Layout/EmptyLinesAroundArguments:
   Enabled: false
 
+Layout/IndentationConsistency:
+    EnforcedStyle: indented_internal_methods
+
 Metrics/ParameterLists:
   Max: 7
 
