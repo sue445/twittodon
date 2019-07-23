@@ -53,7 +53,7 @@ describe Twittodon::Service do
         )
       end
 
-      it "calleds @mastodon#create_status" do
+      it "calleds @mastodon#create_status" do # rubocop:disable RSpec/MultipleExpectations
         expect(tweet.media).not_to be nil
 
         allow(service.mastodon).to receive(:create_status)
