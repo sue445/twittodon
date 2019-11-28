@@ -12,7 +12,7 @@ AllCops:
   # uncomment if use rails cops
   # TargetRailsVersion: 5.0
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle:      table
   EnforcedHashRocketStyle: table
 
