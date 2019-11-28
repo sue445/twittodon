@@ -6,7 +6,7 @@ task :environment do
   begin
     require "dotenv"
     Dotenv.load
-  rescue LoadError # rubocop:disable Lint/HandleExceptions
+  rescue LoadError # rubocop:disable Lint/SuppressedException
   end
 
   Rollbar.configure do |config|
