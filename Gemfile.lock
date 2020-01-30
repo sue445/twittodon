@@ -53,7 +53,7 @@ GEM
     mock_redis (0.22.0)
     multipart-post (2.1.1)
     naught (1.1.0)
-    oj (3.10.1)
+    oj (3.10.2)
     parallel (1.19.1)
     parser (2.7.0.2)
       ast (~> 2.4.0)
