@@ -68,7 +68,7 @@ GEM
     rainbow (3.0.0)
     rake (13.0.1)
     redis (4.1.3)
-    rollbar (2.23.2)
+    rollbar (2.24.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
