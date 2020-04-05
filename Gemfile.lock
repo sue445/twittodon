@@ -55,7 +55,7 @@ GEM
     naught (1.1.0)
     oj (3.10.5)
     parallel (1.19.1)
-    parser (2.7.0.5)
+    parser (2.7.1.0)
       ast (~> 2.4.0)
     power_assert (1.1.7)
     pry (0.13.0)
