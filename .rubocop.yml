@@ -25,5 +25,8 @@ Layout/IndentationConsistency:
 Metrics/ParameterLists:
   Max: 7
 
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
