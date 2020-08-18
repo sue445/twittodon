@@ -27,7 +27,7 @@ describe Twittodon::Service do
         allow(service.mastodon).to receive(:create_status)
         subject
 
-        expected_toot = "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf\n\n(via. Twitter https://twitter.com/sue445/status/866636479061147648)" # rubocop:disable Metrics/LineLength
+        expected_toot = "“GitHubのリポジトリをDprecatedにするスクリプト | Web Scratch” http://htn.to/RC5eJf\n\n(via. Twitter https://twitter.com/sue445/status/866636479061147648)" # rubocop:disable Layout/LineLength
         expect(service.mastodon).to have_received(:create_status).with(expected_toot, [])
       end
     end
