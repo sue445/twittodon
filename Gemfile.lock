@@ -84,7 +84,7 @@ GEM
     rspec-power_assert (1.1.0)
       power_assert (~> 1.1.0)
       rspec (>= 2.14)
-    rspec-support (3.9.3)
+    rspec-support (3.9.4)
     rubocop (0.93.1)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
