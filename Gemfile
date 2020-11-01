@@ -25,6 +25,7 @@ group :development do
 
   gem "pry-byebug", group: :test
   gem "rubocop-performance", require: false
+  gem "rubocop-rspec", ">= 2.0.0.pre", require: false
 end
 
 group :test do
