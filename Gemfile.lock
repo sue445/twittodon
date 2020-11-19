@@ -65,7 +65,7 @@ GEM
     public_suffix (4.0.6)
     rainbow (3.0.0)
     rake (13.0.1)
-    redis (4.2.3)
+    redis (4.2.4)
     regexp_parser (1.8.2)
     rexml (3.2.4)
     rollbar (3.1.1)
