@@ -6,6 +6,7 @@ inherit_gem:
     # uncomment if use rails cops
     # - "config/rails.yml"
     - "config/rspec.yml"
+    - "config/performance.yml"
 
 AllCops:
   TargetRubyVersion: 2.6
