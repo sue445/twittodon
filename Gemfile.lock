@@ -44,7 +44,7 @@ GEM
       ruby2_keywords
     multipart-post (2.1.1)
     naught (1.1.0)
-    oj (3.10.18)
+    oj (3.11.0)
     onkcop (1.0.0.0)
       rubocop (>= 0.80.0)
       rubocop-rspec (>= 1.34.0)
