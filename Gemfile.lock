@@ -99,7 +99,7 @@ GEM
       rubocop (~> 1.0)
       rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     simple_oauth (0.3.1)
     simplecov (0.16.1)
       docile (~> 1.1)
