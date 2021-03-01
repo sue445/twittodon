@@ -13,6 +13,7 @@ AllCops:
   # uncomment if use rails cops
   # TargetRailsVersion: 5.0
   NewCops: enable
+  SuggestExtensions: false
 
 Layout/HashAlignment:
   EnforcedColonStyle:      table
