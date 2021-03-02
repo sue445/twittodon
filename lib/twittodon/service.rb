@@ -119,7 +119,7 @@ module Twittodon
         [
           ::Twitter::Media::Photo,
           ::Twitter::Media::AnimatedGif,
-        ].any? do |media_class| # rubocop:disable Performance/RedundantEqualityComparisonBlock Test is failed when use `.any?(twitter_media)`
+        ].any? do |media_class|
           twitter_media.is_a?(media_class)
         end
       end
