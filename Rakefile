@@ -13,7 +13,7 @@ task :environment do
     config.access_token = ENV["ROLLBAR_ACCESS_TOKEN"]
   end
 
-  redis = ::Redis.new(url: ENV["REDIS_URL"])
+  redis = ::Redis.new(url: ENV["HEROKU_REDIS_TEAL_URL"] || ENV["REDIS_URL"])
 
   @service = Twittodon::Service.new(
     twitter_consumer_key:        ENV["TWITTER_CONSUMER_KEY"],
