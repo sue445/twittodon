@@ -97,6 +97,8 @@ GEM
       rubocop-ast (>= 0.4.0)
     rubocop-rspec (2.9.0)
       rubocop (~> 1.19)
+    rubocop_auto_corrector (0.4.3)
+      rubocop (>= 1.13.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     simple_oauth (0.3.1)
@@ -152,6 +154,7 @@ DEPENDENCIES
   rspec-power_assert
   rubocop-performance
   rubocop-rspec (>= 2.0.0.pre)
+  rubocop_auto_corrector
   tweet_sanitizer
   twitter
   vcr
@@ -161,4 +164,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.1.4
+   1.17.2
