@@ -31,5 +31,8 @@ Metrics/ParameterLists:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
+Style/FetchEnvVar:
+  Enabled: false
+
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
