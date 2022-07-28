@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-ruby "3.1.2"
+ruby "2.7.6"
 
 gem "mastodon-api", ">= 2.0.0", require: "mastodon"
 gem "rake", require: false
