@@ -13,7 +13,7 @@ module Twittodon
     end
 
     def search(query:, since_id: -1, count: 10)
-      client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
+      client.search(query, since_id:, count:, tweet_mode: "extended").take(count)
     end
   end
 end

@@ -27,7 +27,7 @@ module Twittodon
       )
 
       @mastodon = ::Twittodon::Mastodon.new(
-        mastodon_url: mastodon_url,
+        mastodon_url:,
         access_token: mastodon_access_token,
       )
 
@@ -40,7 +40,7 @@ module Twittodon
       since_id = @redis.get(redis_key(query)) || UNKNOWN_SINCE_ID
       puts "query=#{query}, since_id=#{since_id}"
 
-      tweets = @twitter.search(query: query, since_id: since_id, count: max_count).reverse
+      tweets = @twitter.search(query:, since_id:, count: max_count).reverse
 
       save_latest_id(query, tweets.last.id) unless tweets.empty?
 
