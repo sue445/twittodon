@@ -19,7 +19,7 @@ describe Twittodon::Twitter do
   describe "#search" do
     subject do
       VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
-        twitter.search(query:, since_id:, count:).take(count)
+        twitter.search(query: query, since_id: since_id, count: count).take(count)
       end
     end
 
@@ -54,7 +54,7 @@ describe Twittodon::Twitter do
 
     it "works" do
       VCR.use_cassette fixture_name do
-        client.search(query, since_id:, count:, tweet_mode: "extended").take(count)
+        client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
       end
     end
   end
@@ -62,7 +62,7 @@ describe Twittodon::Twitter do
   def fixture_tweets(fixture_name, query)
     since_id = -1
     VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
-      twitter.client.search(query, since_id:, count:, tweet_mode: "extended").take(count)
+      twitter.client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
     end
   end
 end

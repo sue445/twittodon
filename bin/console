@@ -19,7 +19,7 @@ redis = ::Redis.new(url: ENV["HEROKU_REDIS_TEAL_URL"] || ENV["REDIS_URL"])
   mastodon_url:                ENV["MASTODON_URL"],
   mastodon_access_token:       ENV["MASTODON_ACCESS_TOKEN"],
 
-  redis:,
+  redis:                       redis,
 )
 
 @twitter_client = @service.twitter.client

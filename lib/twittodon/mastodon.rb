@@ -16,7 +16,7 @@ module Twittodon
       if media_ids.empty?
         @client.create_status(text)
       else
-        @client.create_status(text, media_ids:)
+        @client.create_status(text, media_ids: media_ids)
       end
     end
 

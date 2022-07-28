@@ -68,7 +68,7 @@ describe Twittodon::Service do
   def fixture_tweets(fixture_name, query)
     since_id = -1
     VCR.use_cassette(fixture_name, record: :none, match_requests_on: [:method, :uri]) do
-      service.twitter.client.search(query, since_id:, count:, tweet_mode: "extended").take(count)
+      service.twitter.client.search(query, since_id: since_id, count: count, tweet_mode: "extended").take(count)
     end
   end
 end
