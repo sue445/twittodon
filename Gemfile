@@ -5,7 +5,7 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 # FIXME: mastodon-api locks with http gem 3.3, but http gem 5.0.0+ is required on Ruby 2.7+
-ruby "2.6.7"
+ruby "2.6.10"
 
 gem "mastodon-api", ">= 2.0.0", require: "mastodon"
 gem "rake", require: false
