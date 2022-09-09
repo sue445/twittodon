@@ -1,3 +1,15 @@
+# NO LONGER MAINTAINED
+Heroku recently announced the end of its free plan offerings.
+
+https://blog.heroku.com/next-chapter
+
+This app is running on Heroku Free dyno, but I decided to terminate this app after Heroku's announcement :sob:
+
+* I have no plans to migrate this app from Heroku to another platform. This app is OSS so you can fork it and make it work on another platform
+* This app will continue to run until Heroku stops this.  (Probably November 28, 2022 or later)
+
+Thank you.
+
 # Twittodon
 Search specific tweet and post toot to mastodon
 
